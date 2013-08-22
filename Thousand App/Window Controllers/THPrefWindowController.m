@@ -730,6 +730,8 @@ static id __sharedPrefWindowController;
 	switch (action) {
 		case THPreviewNone:		return 0;
 		case THPreviewInPopUp:	return 1;
+        default:
+            break;
 	}
 	return 0;
 }
@@ -738,6 +740,8 @@ static id __sharedPrefWindowController;
 	switch (index) {
 		case 0: {	action = THPreviewNone;		break;	}
 		case 1: {	action = THPreviewInPopUp;	break;	}
+        default:
+            break;
 	}
 	[THThreadController setClassPopUpOtherAnchorElementActionType:action];
 }
@@ -746,6 +750,8 @@ static id __sharedPrefWindowController;
 	switch (action) {
 		case THPreviewNone:		return 0;
 		case THPreviewInPopUp:	return 1;
+        default:
+            break;
 	}
 	return 0;
 }
@@ -950,6 +956,7 @@ static id __sharedPrefWindowController;
 #pragma mark Actions
 
 -(IBAction)switchPrefTab:(id)sender {
+    [_prefWindow endEditingFor:nil];
 	[_prefTabView selectTabViewItemWithIdentifier:[(NSToolbarItem *)sender itemIdentifier]];
 }
 -(IBAction)clearNameAndMailHistory:(id)sender {

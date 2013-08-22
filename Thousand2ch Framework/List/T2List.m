@@ -18,6 +18,7 @@
 NSString *T2ListDidStartLoadingNotification = @"T2ListDidStartLoadingNotification";
 NSString *T2ListDidProgressLoadingNotification = @"T2ListDidProgressLoadingNotification";
 NSString *T2ListDidEndLoadingNotification = @"T2ListDidEndLoadingNotification";
+NSString *T2ListDidLoadNotification = @"T2ListDidLoadNotification";
 
 static NSMutableDictionary *__instancesDictionary = nil;
 

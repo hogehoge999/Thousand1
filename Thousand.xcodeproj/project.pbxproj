@@ -64,9 +64,6 @@
 		F43EA36A0F0B0B3C00AE5D2E /* TH32_FontAndColor.png in Resources */ = {isa = PBXBuildFile; fileRef = F43EA3690F0B0B3C00AE5D2E /* TH32_FontAndColor.png */; };
 		F43EA36C0F0B0B6F00AE5D2E /* TH32_Appearance.png in Resources */ = {isa = PBXBuildFile; fileRef = F43EA36B0F0B0B6F00AE5D2E /* TH32_Appearance.png */; };
 		F4455E290EE6386F008BB943 /* THCookiesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4455E280EE6386F008BB943 /* THCookiesWindowController.m */; };
-		F44750410E9647670089E88E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F447503B0E9647670089E88E /* Info.plist */; };
-		F44750E70E969A2B0089E88E /* ThousandMDImporter.mdimporter in Resources */ = {isa = PBXBuildFile; fileRef = F44750DA0E969A2B0089E88E /* ThousandMDImporter.mdimporter */; };
-		F44750EC0E969A390089E88E /* ThousandMDImporter.mdimporter in Spotlightプラグインをコピー */ = {isa = PBXBuildFile; fileRef = F44750DA0E969A2B0089E88E /* ThousandMDImporter.mdimporter */; };
 		F44856E80E49F2EE003372F9 /* Thousand2ch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47457A130865B30700D22BF9 /* Thousand2ch.framework */; };
 		F44857260E4A81D0003372F9 /* TH16_Find2ch.png in Resources */ = {isa = PBXBuildFile; fileRef = F44857240E4A81C3003372F9 /* TH16_Find2ch.png */; };
 		F44857270E4A81D7003372F9 /* THFind2chLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F44856C20E49F22A003372F9 /* THFind2chLocalizable.strings */; };
@@ -448,7 +445,6 @@
 			dstPath = Contents/Library/Spotlight;
 			dstSubfolderSpec = 1;
 			files = (
-				F44750EC0E969A390089E88E /* ThousandMDImporter.mdimporter in Spotlightプラグインをコピー */,
 			);
 			name = "Spotlightプラグインをコピー";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2011,8 +2007,6 @@
 				F490B2500DDD913C0048457A /* TabNewMetalRollover.png in Resources */,
 				F490B2B10DDF39E50048457A /* ThousandDefaultPref.plist in Resources */,
 				F41D5A8D0E07715F0093AB9F /* THCrashLogWindow.nib in Resources */,
-				F44750410E9647670089E88E /* Info.plist in Resources */,
-				F44750E70E969A2B0089E88E /* ThousandMDImporter.mdimporter in Resources */,
 				F4E72B2A0E99179900489A8C /* TH32_Advanced.png in Resources */,
 				F4E72B300E99AB7600489A8C /* ththread.icns in Resources */,
 				F4CC04EB0EDBE31C00AA86DF /* THOperationWindow.nib in Resources */,
@@ -2643,26 +2637,27 @@
 		4700A6B40928C1DB00E0B36B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(NATIVE_ARCH)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_VERSION = 4.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				GCC_VERSION = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = NO;
 				PREBINDING = NO;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				SDKROOT = "";
 			};
 			name = Debug;
 		};
 		4700A6B50928C1DB00E0B36B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_VERSION = 4.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				GCC_VERSION = "";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = "";
 			};
 			name = Release;
 		};

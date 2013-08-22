@@ -59,7 +59,7 @@
 		}
 	}
 	
-	NSEnumerator *columnEnumerator = [[self tableColumns] objectEnumerator];
+	NSEnumerator *columnEnumerator = [[self tableColumns] reverseObjectEnumerator];
 	NSTableColumn *tempColumn = nil;
 	while (tempColumn = [columnEnumerator nextObject]) {
 		[self removeTableColumn:tempColumn];

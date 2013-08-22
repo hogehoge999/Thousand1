@@ -818,12 +818,12 @@ void stampList(T2List *list) {
 -(void)buildThread:(T2Thread *)thread withSrcString:(NSString *)srcString appending:(BOOL)appending {
 	NSScanner *srcScanner = [NSScanner scannerWithString:srcString];
 	[srcScanner setCharactersToBeSkipped:[NSCharacterSet controlCharacterSet]];
-	NSMutableArray *resArray = [NSMutableArray array];
-	NSString *resString;
-	NSString *threadTitle = nil;
-	T2Res *tempRes;
-	NSAutoreleasePool *myPool;
-	unsigned i=0;
+	__block NSMutableArray *resArray = [NSMutableArray array];
+	//NSString *resString;
+	__block NSString *threadTitle = nil;
+	__block T2Res *tempRes;
+	__block NSAutoreleasePool *myPool;
+	__block unsigned i=0;
 	
 	NSArray *oldResArray = [thread resArray];
 	if (appending && oldResArray && [oldResArray count]>0) {
@@ -831,13 +831,33 @@ void stampList(T2List *list) {
 		i = [oldResArray count];
 	}
 	
-	while ([srcScanner scanUpToString:@"\n" intoString:&resString]) {
+    [srcString enumerateLinesUsingBlock:^(NSString *resString, BOOL *stop) {
+	//while ([srcScanner scanUpToString:@"\n" intoString:&resString]) {
 		myPool = [[NSAutoreleasePool alloc] init];
 		
 		if ([resString length]>1) {
 			NSArray *partStringArray = [resString componentsSeparatedByString:@"<>"];
 			unsigned partStringCount = [partStringArray count];
-			
+            if (partStringCount < 5)
+            {
+                NSMutableArray *array = [NSMutableArray arrayWithCapacity:5];
+                for (NSString *part in partStringArray)
+                {
+                    NSRange range = [part rangeOfString:@"<>" options:NSLiteralSearch];
+                    if (range.location == NSNotFound)
+                    {
+                        [array addObject:part];
+                    }
+                    else
+                    {
+                        [array addObject:[part substringToIndex:range.location]];
+                        [array addObject:[part substringFromIndex:NSMaxRange(range)]];
+                    }
+                }
+                partStringArray = array;
+                partStringCount = [partStringArray count];
+            }
+	
 			if (partStringCount > 3) {
 				if (partStringCount > 4 && i==0) {
 					threadTitle = [[partStringArray objectAtIndex:4] retain];
@@ -854,7 +874,7 @@ void stampList(T2List *list) {
 		}
 		
 		[myPool release];
-	}
+	}];
 	[thread setResArray:resArray];
 	if (threadTitle) [thread setTitle:[threadTitle stringByReplacingCharacterReferences]];
 	[threadTitle release];

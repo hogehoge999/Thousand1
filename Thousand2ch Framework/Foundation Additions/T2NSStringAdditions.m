@@ -73,14 +73,15 @@ static NSCharacterSet *__whitespaceAndNewlineCharacterSet = nil;
 	char* outbuf = malloc(__iconvBufferLength);
 	char* outbyteslength = NULL;
 	NSMutableString *resultString = [NSMutableString string];
-	errno = E2BIG;
+	int err = E2BIG;
 	
-	while (errno == E2BIG) {
+	while (err == E2BIG) {
 		outbytesleft = __iconvBufferLength;
 		outbyteslength = outbuf;
 		errno = 0;
 		iconv(descriptor, &inbuf, &inbytesleft, &outbyteslength, &outbytesleft);
-		if (errno == EILSEQ || errno == EINVAL) break;
+        err = errno;
+		if (err == EILSEQ || err == EINVAL) break;
 		NSString *part = [[[NSString alloc] initWithBytes:outbuf
 												   length:__iconvBufferLength-outbytesleft
 												 encoding:NSUnicodeStringEncoding] autorelease];

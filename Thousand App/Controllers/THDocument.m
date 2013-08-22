@@ -157,6 +157,7 @@ static NSString *__oreyonPath = nil;
 		if (MacVersion >= 0x1040){
 			// this call is Tiger only
 			objc_msgSend(toolbar, @selector(setShowsBaselineSeparator:), NO);
+            [_docWindow setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
 		}
 	}
 	

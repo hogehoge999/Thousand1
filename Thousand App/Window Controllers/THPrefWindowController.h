@@ -26,7 +26,7 @@ static NSString *THPrefDebugItemIdentifier 			= @"THPrefDebugItem";
 
 @class THFontWell;
 
-@interface THPrefWindowController : NSWindowController <T2DictionaryConverting> {
+@interface THPrefWindowController : NSWindowController <T2DictionaryConverting, NSToolbarDelegate> {
 	NSArray			*_plugins;
 	//int				_pluginSelectedIndex;
 	//NSArray			*_pluginViews;
